@@ -1,0 +1,82 @@
+<!-- app.component.html -->
+<mat-card>
+  <mat-form-field appearance="fill" style="margin-right:5px">
+    <mat-label>Chapters</mat-label>
+    <mat-select
+      [formControl]="chapters"
+      multiple
+      (selectionChange)="reloadData($event)"
+    >
+      <mat-select-trigger>
+        {{chapters.value?.[0] || ''}}
+        <span
+          *ngIf="(chapters.value?.length || 0) > 1"
+          class="example-additional-selection"
+        >
+          (+{{ (chapters.value?.length || 0) - 1 }}
+          {{ chapters.value?.length === 2 ? 'other' : 'others' }})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let chapter of chapterList" [value]="chapter">{{
+        chapter
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Uvacha</mat-label>
+    <mat-select
+      [formControl]="uvacha"
+      multiple
+      (selectionChange)="reloadData($event)"
+    >
+      <mat-select-trigger>
+        {{uvacha.value?.[0] || ''}}
+        <span
+          *ngIf="(uvacha.value?.length || 0) > 1"
+          class="example-additional-selection"
+        >
+          (+{{ (uvacha.value?.length || 0) - 1 }}
+          {{ uvacha.value?.length === 2 ? 'other' : 'others' }})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let uvacha of getUvachaList()" [value]="uvacha">{{
+        uvacha
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+
+<mat-card>
+  <angular-d3-cloud
+    [data]="data"
+    [width]="width"
+    [height]="height"
+    [padding]="5"
+    font="serif"
+    [rotate]="0"
+    [autoFill]="true"
+    [animations]="false"
+    (wordClick)="oneWordClick($event)"
+  ></angular-d3-cloud>
+  
+  <!--<angular-tag-cloud [data]="data"
+                     [width]="width"
+                     [height]="height"
+                     [overflow]="true"
+                     [strict]="true"
+                     [randomizeAngle]="true"
+                     [log]="'debug'">
+  </angular-tag-cloud>-->
+  <!-- Load d3.js -->
+  <!--<script src="https://d3js.org/d3.v4.js"></script>-->
+
+  <!-- Load d3-cloud -->
+  <!--<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>-->
+
+  <!-- Create a div where the graph will take place -->
+  <!--<div id="my_dataviz"></div>-->
+
+  
+
+</mat-card>
