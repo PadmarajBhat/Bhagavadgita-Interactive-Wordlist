@@ -8,10 +8,13 @@ import { CommonService } from '../../service_files/common.service';
 })
 export class WordlistComponent implements OnInit {
   gita_json: any;
-  wordArray:String[] = [];
+  wordArray: String[] = [];
+
+  //noOfCols = (window.innerWidth < 500) ? 2 : 7;
+  noOfCols = (window.innerWidth / 200);
 
   constructor(private commServ: CommonService) {
-    this.gita_json = this.commServ.gita_df;
+    this.gita_json = this.commServ.gita_df ;
 
     this.gita_json.map((row) => {
       row.words.forEach((word) => this.wordArray.push(word));

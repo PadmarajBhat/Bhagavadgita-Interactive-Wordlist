@@ -151,7 +151,7 @@ export class WordcloudComponent implements OnInit {
     );
     word2Array.sort((a, b) => (a.count < b.count ? 1 : -1));
 
-    this.data = this.assignWordMinMaxSize(word2Array.slice(0,1000));
+    this.data = this.assignWordMinMaxSize(word2Array.slice(0, window.innerWidth < 500 ?200:1000));
 
   }
   
