@@ -5,7 +5,7 @@
     <mat-select
       [formControl]="chapters"
       multiple
-      (selectionChange)="reloadData($event)"
+      (selectionChange)="reloadData()"
     >
       <mat-select-trigger>
         {{chapters.value?.[0] || ''}}
@@ -28,7 +28,7 @@
     <mat-select
       [formControl]="uvacha"
       multiple
-      (selectionChange)="reloadData($event)"
+      (selectionChange)="reloadData()"
     >
       <mat-select-trigger>
         {{uvacha.value?.[0] || ''}}
@@ -56,27 +56,6 @@
     font="serif"
     [rotate]="0"
     [autoFill]="true"
-    [animations]="false"
     (wordClick)="oneWordClick($event)"
   ></angular-d3-cloud>
-  
-  <!--<angular-tag-cloud [data]="data"
-                     [width]="width"
-                     [height]="height"
-                     [overflow]="true"
-                     [strict]="true"
-                     [randomizeAngle]="true"
-                     [log]="'debug'">
-  </angular-tag-cloud>-->
-  <!-- Load d3.js -->
-  <!--<script src="https://d3js.org/d3.v4.js"></script>-->
-
-  <!-- Load d3-cloud -->
-  <!--<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>-->
-
-  <!-- Create a div where the graph will take place -->
-  <!--<div id="my_dataviz"></div>-->
-
-  
-
-</mat-card>
+  </mat-card>
