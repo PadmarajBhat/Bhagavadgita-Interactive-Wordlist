@@ -28,6 +28,7 @@ export class ToolbarComponent implements OnInit {
   }
   private _filter(value: string): String[] {
     const filterValue = value.toLowerCase();
+    this.commServ.search(filterValue);
     return this.options
       .filter((option) => option.toLowerCase().includes(filterValue))
       .slice(0, 50);

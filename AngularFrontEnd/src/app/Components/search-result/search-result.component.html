@@ -18,141 +18,117 @@
         {{ this.getUvachaResult(uvacha).length }}
         sloka(s)</mat-card-title
       >
-      <mat-card
-        matRipple
-        (click)="contentClicked(item)"
-        *ngFor="let item of this.getUvachaResult(uvacha); let i = index"
-        [style.margin-bottom.%]="1"
-      >
-        <mat-card-content
-          matBadge="{{ i + 1 }}"
-          matBadgePosition="before"
-          matBadgeColor="primary"
-        >
-          <div
-            *ngFor="
+      <mat-card matRipple
+                (click)="contentClicked(item)"
+                *ngFor="let item of this.getUvachaResult(uvacha); let i = index"
+                [style.margin-bottom.%]="1">
+
+        <mat-card-content matBadge="{{ i + 1 }}"
+                          matBadgePosition="before"
+                          matBadgeColor="primary">
+
+
+          <div *ngFor="
               let line of item['cleansed_sloka'].split('।').slice(0, 2);
               let first = first
             "
-            class="sloka_mat_card"
-          >
-            <a
-              routerLink=""
-              *ngFor="let word of line.split(' ')"
-              (click)="
+               class="sloka_mat_card">
+            <a routerLink=""
+               *ngFor="let word of line.split(' ')"
+               (click)="
                 this.onWordClick(
                   word.replaceAll('\n', '').replaceAll(' ', ''),
                   $event
                 )
               "
-              [style.margin-right.px]="5"
-            >
+               [style.margin-right.px]="5">
               <!-- [disabled]="
-                word.replaceAll('\n', '').replaceAll(' ', '') ==
-                this.commServ.getSearchText() -->
-              <span
-                *ngIf="
+        word.replaceAll('\n', '').replaceAll(' ', '') ==
+        this.commServ.getSearchText() -->
+              <span *ngIf="
                   word.replaceAll('\n', '').replaceAll(' ', '') ==
                   this.commServ.getSearchText()
                 "
-                style="color:blue"
-              >
+                    style="color:blue">
                 {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
               </span>
-              <span
-                *ngIf="
+              <span *ngIf="
                   word.replaceAll('\n', '').replaceAll(' ', '') !=
                   this.commServ.getSearchText()
-                "
-              >
+                ">
                 {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
               </span>
             </a>
             <span *ngIf="first">|</span>
             <span *ngIf="!first">
-              ||{{ item.chapter_number }}.{{ item.verse_number }}||</span
-            >
+              ||{{ item.chapter_number }}.{{ item.verse_number }}||
+            </span>
           </div>
         </mat-card-content>
         <!-- <mat-card-title>{{ subItem }}</mat-card-title> -->
         <mat-card-content>
-          <div
-            *ngFor="
+          <div *ngFor="
               let line of item['cleansed_t_sloka'].split('\n').slice(0, -1);
               let first = first
             "
-            class="sloka_mat_card"
-          >
+               class="sloka_mat_card">
             <div>
               <div class="sloka_mat_card_content2">
-                <a
-                  routerLink=""
-                  *ngFor="let word of line.split(' ').slice(0, 3)"
-                  (click)="
+                <a routerLink=""
+                   *ngFor="let word of line.split(' ').slice(0, 3)"
+                   (click)="
                     this.onWordClick(
                       word.replaceAll('\n', '').replaceAll(' ', ''),
                       $event
                     )
                   "
-                  [style.margin-right.px]="3"
-                >
+                   [style.margin-right.px]="3">
                   <!-- [disabled]="
-                word.replaceAll('\n', '').replaceAll(' ', '') ==
-                this.commServ.getSearchText() -->
-                  <span
-                    *ngIf="
+            word.replaceAll('\n', '').replaceAll(' ', '') ==
+            this.commServ.getSearchText() -->
+                  <span *ngIf="
                       word.replaceAll('\n', '').replaceAll(' ', '') ==
                       this.commServ.getSearchText()
                     "
-                    style="color:blue"
-                  >
+                        style="color:blue">
                     {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
                   </span>
-                  <span
-                    *ngIf="
+                  <span *ngIf="
                       word.replaceAll('\n', '').replaceAll(' ', '') !=
                       this.commServ.getSearchText()
-                    "
-                  >
+                    ">
                     {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
                   </span>
                 </a>
               </div>
               <div class="sloka_mat_card_content2">
-                <a
-                  routerLink=""
-                  *ngFor="let word of line.split(' ').slice(3)"
-                  (click)="
+                <a routerLink=""
+                   *ngFor="let word of line.split(' ').slice(3)"
+                   (click)="
                     this.onWordClick(
                       word.replaceAll('\n', '').replaceAll(' ', ''),
                       $event
                     )
                   "
-                  [style.margin-right.px]="3"
-                >
+                   [style.margin-right.px]="3">
                   <!-- [disabled]="
-                word.replaceAll('\n', '').replaceAll(' ', '') ==
-                this.commServ.getSearchText() -->
-                  <span
-                    *ngIf="
+            word.replaceAll('\n', '').replaceAll(' ', '') ==
+            this.commServ.getSearchText() -->
+                  <span *ngIf="
                       word.replaceAll('\n', '').replaceAll(' ', '') ==
                       this.commServ.getSearchText()
                     "
-                    style="color:blue"
-                  >
+                        style="color:blue">
                     {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
                   </span>
-                  <span
-                    *ngIf="
+                  <span *ngIf="
                       word.replaceAll('\n', '').replaceAll(' ', '') !=
                       this.commServ.getSearchText()
-                    "
-                  >
+                    ">
                     {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
                   </span>
                 </a>
                 <!-- <span *ngIf="first">|</span> -->
-
                 <!-- <mat-card-title>{{ subItem }}</mat-card-title> -->
               </div>
             </div>
@@ -161,10 +137,14 @@
         </mat-card-content>
         <!-- <span>||{{ item.chapter_number }}.{{ item.verse_number }}||</span> -->
         <!-- <mat-card-actions align="end">
-          <button mat-raised-button>
-            ||{{ item.chapter_number }}.{{ item.verse_number }}||
-          </button>
-        </mat-card-actions> -->
+    <button mat-raised-button>
+      ||{{ item.chapter_number }}.{{ item.verse_number }}||
+    </button>
+  </mat-card-actions> -->
+
+        <mat-card-actions align="end">
+          <button mat-icon-button disabled><mat-icon>more_vert</mat-icon></button>
+        </mat-card-actions>
       </mat-card>
     </mat-card>
   </div>
