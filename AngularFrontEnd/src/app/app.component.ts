@@ -8,5 +8,13 @@ import { CommonService } from './service_files/common.service';
 })
 export class AppComponent {
   constructor(public commServ: CommonService) { }
+  scrollUp() {
+    console.log("scrollUp");
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 
 }

@@ -1,3 +1,7 @@
-<mat-grid-list [cols]="this.noOfCols" rowHeight="5:1">
-  <mat-grid-tile *ngFor="let word of wordArray">{{ word }}</mat-grid-tile>
-</mat-grid-list>
+  <mat-card>
+    <mat-card-content>
+      <mat-grid-list [cols]="this.noOfCols" rowHeight="5:1">
+        <mat-grid-tile *ngFor="let word of wordArray">{{ word }}</mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
