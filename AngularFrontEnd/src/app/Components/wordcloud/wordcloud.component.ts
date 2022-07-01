@@ -10,7 +10,7 @@ import { CommonService } from '../../service_files/common.service';
 export class WordcloudComponent implements OnInit {
   gita_Json: any;
   data: any[]= [];
-  width = window.outerWidth;
+  width = window.outerWidth - window.outerWidth*0.07;
   height = window.outerHeight;
   chapters = new FormControl();
   svg: any;

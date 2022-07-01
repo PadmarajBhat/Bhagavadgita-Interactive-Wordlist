@@ -1,6 +1,6 @@
 <mat-card>
   <mat-form-field appearance="fill">
-    <mat-label>Chapters</mat-label>
+    <mat-label>Choose Chapters to Read</mat-label>
     <mat-select [formControl]="chapters" multiple>
       <mat-select-trigger>
         {{chapters.value?.[0] || ''}}
@@ -18,7 +18,7 @@
     </mat-select>
   </mat-form-field>
   <mat-card *ngFor="let chapter of chapters.value">
-    <mat-card-title>{{ chapter }}</mat-card-title>
+    <mat-card-title style="display:flex;justify-content:center">{{ chapter }}</mat-card-title>
     <mat-card
       *ngFor="let sloka of this.result[chapter.split(' ')[1]]"
       id="{{ sloka.chapter_number + '.' + sloka.verse_number }}"

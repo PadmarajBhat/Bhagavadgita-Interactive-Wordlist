@@ -1,7 +1,20 @@
-  <mat-card>
+<mat-form-field appearance="fill">
+  <mat-label>Select a Letter</mat-label>
+  <mat-select [(value)]="letterSelected" (selectionChange)="changeWordArray()">
+    <mat-option *ngFor="let letter of letters" [value]="letter.value">
+      {{letter.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  <mat-card >
+    <mat-card-title style="display:flex;justify-content:center">
+      ' {{getDevanagariChar(letterSelected)}} ' has {{this.wordArray.length}} words
+    </mat-card-title>
+    <mat-card-subtitle>Click on the word to search its occurrences.</mat-card-subtitle>
     <mat-card-content>
       <mat-grid-list [cols]="this.noOfCols" rowHeight="5:1">
-        <mat-grid-tile *ngFor="let word of wordArray">{{ word }}</mat-grid-tile>
+        <mat-grid-tile *ngFor="let word of wordArray"><button mat-button (click)="oneWordClick(word)">{{ word }}</button></mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>
   </mat-card>

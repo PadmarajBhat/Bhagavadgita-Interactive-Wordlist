@@ -49,13 +49,8 @@ export class GitaChaptersComponent implements OnInit {
     this.localContext = this.commServe.getSlokaContext();
     console.log('Got context....:', this.localContext);
 
-    if (this.localContext) {
-      if (this.localContext['chapters_selected']) {
-        this.chapters.setValue(this.localContext['chapters_selected']);
-      } else {
-        this.chapters.setValue([]);
-      }
-    }
+    this.localContext ? this.chapters.setValue(this.localContext['chapters_selected']) : this.chapters.setValue(['Chapter 15']);
+
   }
 
   ngOnInit() {
