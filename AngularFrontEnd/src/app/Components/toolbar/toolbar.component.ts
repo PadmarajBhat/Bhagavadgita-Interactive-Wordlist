@@ -16,6 +16,7 @@ export class ToolbarComponent implements OnInit {
   filteredOptions: Observable<String[]>;
 
   constructor(public commServ: CommonService) {
+    
     this.options = this.commServ.getAllSlokaWords();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -28,7 +29,10 @@ export class ToolbarComponent implements OnInit {
   }
   private _filter(value: string): String[] {
     const filterValue = value.toLowerCase();
-    this.commServ.search(filterValue);
+
+    if (value.length > 0) {
+      this.commServ.search(filterValue);
+    }
     return this.options
       .filter((option) => option.toLowerCase().includes(filterValue))
       .slice(0, 50);

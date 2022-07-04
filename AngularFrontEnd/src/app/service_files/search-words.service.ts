@@ -17,32 +17,27 @@ export class SearchWordsService {
  
 
   getSearchResult(searchText: string) {
-    let slokaList = [];
-    let tSlokaList = [];
-    if (searchText.split(' ').length == 1) {
-      slokaList = this.gitaJson.filter(
-        (row) => row['words'].includes(searchText)
-        //console.log('Searching row:', row['cleansed_sloka']);
-      );
-      //console.log('sloka list : ', searchText, slokaList);
-      tSlokaList = this.gitaJson.filter((row) =>
+    let slokaList:any[] = [];
+    let tSlokaList:any[] = [];
+    
+    let slokaWordList = this.gitaJson.filter(
+      (row) => row['words'].includes(searchText) ||
         row['t_words'].includes(searchText)
-      );
-    } else {
-      slokaList = this.gitaJson.filter(
-        (row) => row['cleansed_sloka'].includes(searchText)
-        //console.log('Searching row:', row['cleansed_sloka']);
-      );
-      //console.log('sloka list : ', searchText, slokaList);
-      tSlokaList = this.gitaJson.filter((row) =>
+    );
+    console.log("slokaWordList : ", slokaWordList)
+
+
+    slokaList = this.gitaJson.filter(
+      (row) => row['cleansed_sloka'].includes(searchText) ||
         row['cleansed_t_sloka'].includes(searchText)
       );
-    }
 
-    let result = [...slokaList, ...tSlokaList];
+
+    let result = [...new Set([...slokaWordList,...slokaList])];
 
     this.searchText = searchText;
-    this.searchResult = [...new Set(result)];
+    //this.searchResult = [...new Set(result)];
+    this.searchResult = result;
     this.found = this.searchResult.length > 0 ? true : false;
     this.searched = true;
     console.log('search result : ', this.searchResult);
