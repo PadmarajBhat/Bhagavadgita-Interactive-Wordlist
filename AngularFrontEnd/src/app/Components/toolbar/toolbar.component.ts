@@ -30,7 +30,7 @@ export class ToolbarComponent implements OnInit {
   private _filter(value: string): String[] {
     const filterValue = value.toLowerCase();
 
-    if (value.length > 1) {
+    if (value.length > (window.innerWidth > 400 ? 2 : 3)) {
       this.commServ.search(filterValue);
     }
     return this.options
