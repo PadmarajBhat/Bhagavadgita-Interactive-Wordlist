@@ -29,7 +29,7 @@ export class SearchResultComponent implements OnInit {
   getUvachaResult(uvachaName: string) {
     return this.commServ
       .getSearchResult()
-      .filter((row) => row.uvacha == uvachaName);
+      .filter((row) => row.uvacha == uvachaName).slice(0,50);
   }
   contentClicked(context: any) {
     console.log('Content Clicked', context);
