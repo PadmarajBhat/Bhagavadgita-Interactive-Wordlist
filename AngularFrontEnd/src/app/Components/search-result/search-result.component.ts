@@ -38,77 +38,93 @@ export class SearchResultComponent implements OnInit {
     this.commServ.switchTo(2);
   }
 
-  getSlokaHighlightWords(sloka: String) {
-    if (sloka.includes('ज्ञानमावृत्य') ){
-      console.log("What is in : ", sloka)
-    }
-    let lines = sloka.split('।').slice(0, 2);
+  getSearchIndexArrayResult(searchIndexArray, wordStartIndex, wordEndIndex) {
 
-    let startIndex = sloka.indexOf(this.commServ.getSearchText());
-    let endIndex = startIndex + this.commServ.getSearchText().length;
-    //console.log("Indexes : ", startIndex, endIndex, lines);
+    let result: any[] = [];
 
-    let assignIndex = 0;
+    result = searchIndexArray.filter(indexObject => 
+      //word is overlapping searched word
+      ((indexObject.startIndex <= wordStartIndex) && (wordStartIndex < indexObject.endIndex))
+        || ((indexObject.startIndex <= wordEndIndex) && (wordEndIndex < indexObject.endIndex))
+
+        //word is smaller than searched word
+        || ((indexObject.startIndex <= wordStartIndex) && (wordEndIndex < indexObject.endIndex))
+
+        //word is bigger than searched word
+        || ((wordStartIndex <= indexObject.startIndex) && (indexObject.endIndex <= wordEndIndex))
+
+    )
+    
+    return result.length>0?true:false
+  }
+
+  getHighlightArray(searchIndexArray:any[], traceIndex:number, wordArray: String) {
+    let assignIndex = traceIndex;
     let wordStructArray: any[] = [];
 
-    lines[0].split(" ").forEach(word => {
+    wordArray.split(" ").forEach(word => {
       word = word.replaceAll('\n', '').replaceAll(' ', '')
       wordStructArray.push(
         {
           'word': word,
           /* 
            * */
-          'highlight':
-            //word is overlapping searched word
-            ((startIndex <= assignIndex) && (assignIndex < endIndex))
-              || ((startIndex <= assignIndex + word.length) && (assignIndex + word.length < endIndex))
-
-              //word is smaller than searched word
-              || ((startIndex <= assignIndex) && (assignIndex + word.length < endIndex))
-
-              //word is bigger than searched word
-              || ((assignIndex <= startIndex) && (endIndex <= assignIndex + word.length)) ? true : false,
+          'highlight': this.getSearchIndexArrayResult(searchIndexArray, assignIndex, assignIndex + word.length)
+            ? true : false,
 
           'indexStart': assignIndex,
           'indexEnd': assignIndex + word.length
         })
-      if (word == 'ज्ञानमावृत्य') {
-        console.log(word, startIndex, assignIndex, assignIndex + word.length + 1, endIndex)
-      }
+       // console.log(word, startIndex, assignIndex, assignIndex + word.length + 1, endIndex)
       assignIndex += word.length + 1;
       //console.log(word, startIndex, assignIndex,  assignIndex + word.length + 1, endIndex)
     })
 
-    let wordStructArray2: any[] = [];
+    //console.log(wordArray, wordStructArray, searchIndexArray)
+    return wordStructArray
+  }
 
-    //+1 for '|'
-    //assignIndex += 1
+  returnWordStructureArray(sloka:String, lines:any[]) {
+    let searchText = this.commServ.getSearchText();
 
-    lines[1].split(" ").forEach(word => {
-      word = word.replaceAll('\n', '').replaceAll(' ', '')
+    let searchIndexArray: any[] = [];
+    let loopindex = -2;
+    while (loopindex != -1) {
+      loopindex = sloka.indexOf(searchText, loopindex + 1);
+      searchIndexArray.push({
+        'startIndex': loopindex,
+        'endIndex': loopindex == -1 ? -1 : loopindex + searchText.length
+      })
+    }
 
-      wordStructArray2.push(
-        {
-          'word': word,
-          'highlight': //word is overlapping searched word
-            ((startIndex <= assignIndex) && (assignIndex < endIndex))
-              || ((startIndex <= assignIndex + word.length) && (assignIndex + word.length < endIndex))
+    let wordStructArray: any[] = [];
+    wordStructArray.push(this.getHighlightArray(searchIndexArray, 0, lines[0]))
+    wordStructArray.push(this.getHighlightArray(searchIndexArray, lines[0].length, lines[1]))
+    return wordStructArray
+  }
 
-              //word is smaller than searched word
-              || ((startIndex <= assignIndex) && (assignIndex + word.length < endIndex))
+  getSlokaHighlightWords(item: any) {
+    //console.log("What is in : ", sloka)
+    let sloka = item['cleansed_sloka']
+    //console.log("What is in : ", item, sloka);
 
-              //word is bigger than searched word
-              || ((assignIndex <= startIndex) && (endIndex <= assignIndex + word.length)) ? true : false,
-          'indexStart': assignIndex,
-          'indexEnd': assignIndex + word.length
-        })
-      if (word == 'ज्ञानमावृत्य') {
-        console.log(word, startIndex, assignIndex, assignIndex + word.length + 1, endIndex)
-      }
-      assignIndex += word.length + 1;
-    })
+    let lines = sloka.split('।').slice(0, 2);
+    
+    let slokaWordArray = this.returnWordStructureArray(sloka, lines);
 
-    //console.log("Display Array : ", [wordStructArray, wordStructArray2])
-    return [wordStructArray, wordStructArray2]
+    /*.......................5.28............caused issue to below code ......*/
+    //if (item['cleansed_t_sloka']) {
+    //  console.log(item);
+    //  sloka = item['cleansed_t_sloka'];
+    //  lines = sloka.split('\n').slice(0, 2);
+
+    //  let t_slokaWordArray = this.returnWordStructureArray(sloka, lines);
+
+    //  console.log(t_slokaWordArray)
+    //}
+    //else {console.log(item) }
+    
+    
+    return slokaWordArray
   }
 }

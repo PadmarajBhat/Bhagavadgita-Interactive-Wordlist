@@ -29,7 +29,7 @@
 
           <div style="display:flex;justify-content:center">
           <a routerLink=""
-             *ngFor="let wordContext of getSlokaHighlightWords(item['cleansed_sloka'])[0]"
+             *ngFor="let wordContext of getSlokaHighlightWords(item)[0]"
              (click)="
                 this.onWordClick(
                   wordContext.word,
@@ -54,7 +54,7 @@
             </div>
           <div style="display:flex;justify-content:center">
           <a routerLink=""
-             *ngFor="let wordContext of getSlokaHighlightWords(item['cleansed_sloka'])[1]"
+             *ngFor="let wordContext of getSlokaHighlightWords(item)[1]"
              (click)="
                 this.onWordClick(
                   wordContext.word,
