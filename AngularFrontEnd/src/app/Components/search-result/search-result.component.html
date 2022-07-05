@@ -27,125 +27,140 @@
                           matBadgePosition="before"
                           matBadgeColor="primary">
 
-
-          <div *ngFor="
-              let line of item['cleansed_sloka'].split('।').slice(0, 2);
-              let first = first
-            "
-               class="sloka_mat_card">
-            <a routerLink=""
-               *ngFor="let word of line.split(' ')"
-               (click)="
+          <div style="display:flex;justify-content:center">
+          <a routerLink=""
+             *ngFor="let wordContext of getSlokaHighlightWords(item['cleansed_sloka'])[0]"
+             (click)="
                 this.onWordClick(
-                  word.replaceAll('\n', '').replaceAll(' ', ''),
+                  wordContext.word,
                   $event
                 )
               "
-               [style.margin-right.px]="5">
-              <!-- [disabled]="
-        word.replaceAll('\n', '').replaceAll(' ', '') ==
-        this.commServ.getSearchText() -->
-              <span *ngIf="
-                  word.replaceAll('\n', '').replaceAll(' ', '') ==
-                  this.commServ.getSearchText()
+             [style.margin-right.px]="5">
+
+            <span *ngIf="
+                  wordContext.highlight
                 "
-                    style="color:blue;font-weight:bold">
-                {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
-              </span>
-              <span *ngIf="
-                  word.replaceAll('\n', '').replaceAll(' ', '') !=
-                  this.commServ.getSearchText()
-                ">
-                {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
-              </span>
-            </a>
-            <span *ngIf="first">|</span>
-            <span *ngIf="!first">
-              ||{{ item.chapter_number }}.{{ item.verse_number }}||
+                  style="color:blue;font-weight:bold">
+              {{ wordContext.word.replaceAll('\n', '').replaceAll(' ', '') }}
             </span>
+            <span *ngIf="
+                  !wordContext.highlight
+                ">
+              {{ wordContext.word.replaceAll('\n', '').replaceAll(' ', '') }}
+            </span>
+          </a>
+          <span>|</span>
+            </div>
+          <div style="display:flex;justify-content:center">
+          <a routerLink=""
+             *ngFor="let wordContext of getSlokaHighlightWords(item['cleansed_sloka'])[1]"
+             (click)="
+                this.onWordClick(
+                  wordContext.word,
+                  $event
+                )
+              "
+             [style.margin-right.px]="5">
+
+            <span *ngIf="
+                  wordContext.highlight
+                "
+                  style="color:blue;font-weight:bold">
+              {{ wordContext.word.replaceAll('\n', '').replaceAll(' ', '') }}
+            </span>
+            <span *ngIf="
+                  !wordContext.highlight
+                ">
+              {{ wordContext.word.replaceAll('\n', '').replaceAll(' ', '') }}
+            </span>
+          </a>
+          <span>
+            ||{{ item.chapter_number }}.{{ item.verse_number }}||
+          </span>
           </div>
         </mat-card-content>
-        <!-- <mat-card-title>{{ subItem }}</mat-card-title> -->
-        <mat-card-content>
-          <div *ngFor="
+  <!-- <mat-card-title>{{ subItem }}</mat-card-title> -->
+            <mat-card-content>
+              <div *ngFor="
               let line of item['cleansed_t_sloka'].split('\n').slice(0, -1);
               let first = first
             "
-               class="sloka_mat_card">
-            <div>
-              <div class="sloka_mat_card_content2">
-                <a routerLink=""
-                   *ngFor="let word of line.split(' ').slice(0, 3)"
-                   (click)="
+                   class="sloka_mat_card">
+                <div>
+                  <div class="sloka_mat_card_content2">
+                    <a routerLink=""
+                       *ngFor="let word of line.split(' ').slice(0, 3)"
+                       (click)="
                     this.onWordClick(
                       word.replaceAll('\n', '').replaceAll(' ', ''),
                       $event
                     )
                   "
-                   [style.margin-right.px]="3">
-                  <!-- [disabled]="
+                       [style.margin-right.px]="3">
+                      <!-- [disabled]="
             word.replaceAll('\n', '').replaceAll(' ', '') ==
             this.commServ.getSearchText() -->
-                  <span *ngIf="
+                      <span *ngIf="
                       word.replaceAll('\n', '').replaceAll(' ', '') ==
                       this.commServ.getSearchText()
                     "
-                        style="color: blue; font-weight: bold">
-                    {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
-                  </span>
-                  <span *ngIf="
+                            style="color: blue; font-weight: bold">
+                        {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
+                      </span>
+                      <span *ngIf="
                       word.replaceAll('\n', '').replaceAll(' ', '') !=
                       this.commServ.getSearchText()
                     ">
-                    {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
-                  </span>
-                </a>
-              </div>
-              <div class="sloka_mat_card_content2">
-                <a routerLink=""
-                   *ngFor="let word of line.split(' ').slice(3)"
-                   (click)="
+                        {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
+                      </span>
+                    </a>
+                  </div>
+                  <div class="sloka_mat_card_content2">
+                    <a routerLink=""
+                       *ngFor="let word of line.split(' ').slice(3)"
+                       (click)="
                     this.onWordClick(
                       word.replaceAll('\n', '').replaceAll(' ', ''),
                       $event
                     )
                   "
-                   [style.margin-right.px]="3">
-                  <!-- [disabled]="
+                       [style.margin-right.px]="3">
+                      <!-- [disabled]="
             word.replaceAll('\n', '').replaceAll(' ', '') ==
             this.commServ.getSearchText() -->
-                  <span *ngIf="
+                      <span *ngIf="
                       word.replaceAll('\n', '').replaceAll(' ', '') ==
                       this.commServ.getSearchText()
                     "
-                        style="color: blue; font-weight: bold">
-                    {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
-                  </span>
-                  <span *ngIf="
+                            style="color: blue; font-weight: bold">
+                        {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
+                      </span>
+                      <span *ngIf="
                       word.replaceAll('\n', '').replaceAll(' ', '') !=
                       this.commServ.getSearchText()
                     ">
-                    {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
-                  </span>
-                </a>
-                <!-- <span *ngIf="first">|</span> -->
-                <!-- <mat-card-title>{{ subItem }}</mat-card-title> -->
+                        {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
+                      </span>
+                    </a>
+                    <!-- <span *ngIf="first">|</span> -->
+                    <!-- <mat-card-title>{{ subItem }}</mat-card-title> -->
+                  </div>
+                </div>
+                <!-- <span *ngIf="!first"> || </span> -->
               </div>
-            </div>
-            <!-- <span *ngIf="!first"> || </span> -->
-          </div>
-        </mat-card-content>
-        <!-- <span>||{{ item.chapter_number }}.{{ item.verse_number }}||</span> -->
-        <!-- <mat-card-actions align="end">
+            </mat-card-content>
+            <!-- <span>||{{ item.chapter_number }}.{{ item.verse_number }}||</span> -->
+            <!-- <mat-card-actions align="end">
     <button mat-raised-button>
       ||{{ item.chapter_number }}.{{ item.verse_number }}||
     </button>
   </mat-card-actions> -->
 
-        <mat-card-actions align="end">
-          <button mat-icon-button disabled><mat-icon>more_vert</mat-icon></button>
-        </mat-card-actions>
-      </mat-card>
+            <mat-card-actions align="end">
+              <button mat-icon-button disabled><mat-icon>more_vert</mat-icon></button>
+            </mat-card-actions>
+</mat-card>
     </mat-card>
   </div>
 </mat-card>
