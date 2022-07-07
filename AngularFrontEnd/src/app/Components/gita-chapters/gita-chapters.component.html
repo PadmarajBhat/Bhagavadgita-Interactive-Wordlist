@@ -19,98 +19,82 @@
   </mat-form-field>
   <mat-card *ngFor="let chapter of chapters.value">
     <mat-card-title style="display:flex;justify-content:center">{{ chapter }}</mat-card-title>
-    <mat-card
-      *ngFor="let sloka of this.result[chapter.split(' ')[1]]"
-      id="{{ sloka.chapter_number + '.' + sloka.verse_number }}"
-    >
-      <mat-card-content
-        *ngFor="
+    <mat-card-subtitle>Click on a word to search its occurrences !!!</mat-card-subtitle>
+
+    <mat-card *ngFor="let sloka of this.result[chapter.split(' ')[1]]"
+              id="{{ sloka.chapter_number + '.' + sloka.verse_number }}">
+      <mat-card-content *ngFor="
           let line of getSlokaLines(sloka);
           let first = first;
           let last = last
         "
-        style="display:flex;justify-content:center;margin:1%"
-      >
+                        style="display:flex;justify-content:center;margin:1%">
         <mat-card-content *ngIf="first && getSlokaLines(sloka).length > 2">
           {{ line }}
         </mat-card-content>
         <mat-card-content *ngIf="!(first && getSlokaLines(sloka).length > 2)">
-          <a
-            routerLink=""
-            *ngFor="let word of line.split(' ')"
-            (click)="
+          <a routerLink=""
+             *ngFor="let word of line.split(' ')"
+             (click)="
               this.oneWordClick(
                 word.replaceAll('\n', '').replaceAll(' ', ''),
                 sloka
               )
             "
-            [style.margin-right.px]="2"
-          >
-            <span
-              *ngIf="
+             [style.margin-right.px]="2">
+            <span *ngIf="
                 word.replaceAll('\n', '').replaceAll(' ', '') ==
                 this.commServe.getSearchText()
               "
-              color="warn"
-            >
+                  color="warn">
               {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
             </span>
-            <span
-              *ngIf="
+            <span *ngIf="
                 word.replaceAll('\n', '').replaceAll(' ', '') !=
                 this.commServe.getSearchText()
-              "
-            >
+              ">
               {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
             </span>
           </a>
           <span *ngIf="!last">|</span>
           <span *ngIf="last">
-            ||{{ sloka.chapter_number }}.{{ sloka.verse_number }}||</span
-          >
+            ||{{ sloka.chapter_number }}.{{ sloka.verse_number }}||
+          </span>
         </mat-card-content>
       </mat-card-content>
 
       <!-- For transliteration -->
-      <mat-card-content
-        *ngFor="
+      <mat-card-content *ngFor="
           let line of sloka.transliteration.split('\n').slice(0, -1);
           let first = first;
           let last = last
         "
-        style="display:flex;justify-content:center"
-      >
+                        style="display:flex;justify-content:center">
         <mat-card-content *ngIf="first && getSlokaLines(sloka).length > 2">
           {{ line }}
         </mat-card-content>
         <mat-card-content *ngIf="!(first && getSlokaLines(sloka).length > 2)">
-          <a
-            routerLink=""
-            *ngFor="let word of line.split(' ')"
-            (click)="
+          <a routerLink=""
+             *ngFor="let word of line.split(' ')"
+             (click)="
               this.oneWordClick(
                 word.replaceAll('\n', '').replaceAll(' ', ''),
                 sloka
               )
             "
-            [style.margin-right.px]="2"
-            [id]="sloka.chapter_number + '.' + sloka.verse_number"
-          >
-            <span
-              *ngIf="
+             [style.margin-right.px]="2"
+             [id]="sloka.chapter_number + '.' + sloka.verse_number">
+            <span *ngIf="
                 word.replaceAll('\n', '').replaceAll(' ', '') ==
                 this.commServe.getSearchText()
               "
-              style="color:blue"
-            >
+                  style="color:blue">
               {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
             </span>
-            <span
-              *ngIf="
+            <span *ngIf="
                 word.replaceAll('\n', '').replaceAll(' ', '') !=
                 this.commServe.getSearchText()
-              "
-            >
+              ">
               {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
             </span>
           </a>

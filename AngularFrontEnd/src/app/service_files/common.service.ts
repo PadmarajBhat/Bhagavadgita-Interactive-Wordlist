@@ -15,11 +15,23 @@ export class CommonService {
     private wordCloudService: WordcloudService,
     private processDataService: ProcessDataService
   ) {
-    this.componentIndicator = Constants.WORD_LIST;
+
+    let defaultServiceToLaunch = [Constants.WORD_LIST, Constants.WORD_CLOUD, Constants.GITA_CHAPTERS]
+    this.componentIndicator = defaultServiceToLaunch[Math.floor(Math.random() * defaultServiceToLaunch.length)];
     this.gita_df = this.searchService.gitaJson;
   }
 
-  switchTo(number: Constants) {
+  switchTo(number: Constants, buttonClicked?: Boolean) {
+
+    if (number == Constants.GITA_CHAPTERS && buttonClicked) {
+      let context = this.chapterService.getSlokaContext();
+      if (context) {
+        context['verse_number'] = 1;
+        this.chapterService.setSlokaContext(context);
+      }
+      console.log("switchTo :", number, context);
+    }
+
     this.componentIndicator = number;
     console.log('Switch To : ', number);
   }
