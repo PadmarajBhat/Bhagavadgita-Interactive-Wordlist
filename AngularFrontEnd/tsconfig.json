@@ -21,7 +21,9 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
-
+    "types": [
+      "node"
+    ],
 
 
     "target": "es2020",

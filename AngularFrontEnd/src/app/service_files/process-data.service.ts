@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
 import gDfJson from '../json_files/g_df.json';
 
 
