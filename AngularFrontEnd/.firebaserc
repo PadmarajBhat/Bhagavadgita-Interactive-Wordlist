@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "bhagavadgita-iw"
+  },
+  "targets": {
+    "bhagavadgita-iw": {
+      "hosting": {
+        "AngularFrontEnd": [
+          "bhagavadgita-iw"
+        ]
+      }
+    }
   }
 }

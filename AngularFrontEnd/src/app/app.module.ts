@@ -33,6 +33,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProcessDataService } from './service_files/process-data.service';
 import { SearchResultComponent } from './Components/search-result/search-result.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -64,6 +67,8 @@ import { SearchResultComponent } from './Components/search-result/search-result.
     AngularD3CloudModule,
     MatListModule,
     MatGridListModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [ChapterService, CommonService, ProcessDataService, SearchWordsService, WordcloudService],
   bootstrap: [AppComponent]
