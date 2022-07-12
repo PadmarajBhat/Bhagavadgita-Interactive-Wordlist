@@ -19,6 +19,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatRippleModule } from '@angular/material/core';
 import { AngularD3CloudModule } from 'angular-d3-cloud';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { SearchWordsService } from './service_files/search-words.service';
 import { GitaChaptersComponent } from './Components/gita-chapters/gita-chapters.component';
@@ -35,7 +37,12 @@ import { ProcessDataService } from './service_files/process-data.service';
 import { SearchResultComponent } from './Components/search-result/search-result.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { BellComponentComponent } from './Components/toolbar/bell-component/bell-component.component';
+import { DialogWindowComponent } from './Components/toolbar/bell-component/dialog-window/dialog-window.component';
+
 
 
 @NgModule({
@@ -45,7 +52,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     GitaChaptersComponent,
     WordlistComponent,
     SearchResultComponent,
-    WordcloudComponent
+    WordcloudComponent,
+    BellComponentComponent,
+    DialogWindowComponent
   ],
   imports: [
     BrowserModule,
@@ -69,8 +78,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     MatGridListModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase()),
+    MatDialogModule,
   ],
-  providers: [ChapterService, CommonService, ProcessDataService, SearchWordsService, WordcloudService],
+  providers: [ChapterService, CommonService, ProcessDataService, SearchWordsService, WordcloudService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
