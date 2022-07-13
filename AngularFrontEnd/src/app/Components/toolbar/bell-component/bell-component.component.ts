@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FbaseService } from '../../../service_files/fbase.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogWindowComponent } from './dialog-window/dialog-window.component';
+import { CommonService } from '../../../service_files/common.service';
 
 
 @Component({
@@ -11,9 +12,9 @@ import { DialogWindowComponent } from './dialog-window/dialog-window.component';
 })
 export class BellComponentComponent implements OnInit {
   counter: number = 0;
-  constructor(public fbase: FbaseService, public dialog: MatDialog) {
-    fbase.getCounter().subscribe((data) => { console.log("Data at buttong :", data.data().count); this.counter = data.data().count });
-
+  constructor(public fbase: FbaseService, public dialog: MatDialog, private commService: CommonService) {
+    fbase.getCounter().subscribe((data) => { console.log("Data at buttong :", data); this.counter = data.count });
+    
   }
 
   ngOnInit(): void {
@@ -31,6 +32,8 @@ export class BellComponentComponent implements OnInit {
   incrementCounter() {
     this.fbase.setCounter(++this.counter);
     this.openDialog();
+
+    this.commService.setBellCounter();
   }
 
 }

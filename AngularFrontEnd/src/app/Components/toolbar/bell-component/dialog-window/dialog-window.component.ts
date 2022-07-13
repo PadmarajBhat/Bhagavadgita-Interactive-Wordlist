@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { allowedNodeEnvironmentFlags } from 'process';
 import { CommonService } from '../../../../service_files/common.service';
+import { FbaseService } from '../../../../service_files/fbase.service';
 
 @Component({
   selector: 'app-dialog-window',
@@ -8,14 +9,18 @@ import { CommonService } from '../../../../service_files/common.service';
   styleUrls: ['./dialog-window.component.css']
 })
 export class DialogWindowComponent implements OnInit {
-
-  constructor(cs: CommonService) {
+  sloka: any;
+  image: any;
+  constructor(cs: CommonService, fbservice: FbaseService) {
     let allSlokas = cs.gita_df;
-    //console.log(allSlokas.filter(x => x.uvacha = "arjun"), allSlokas);
 
-    let dummy:String[] = [];
-    cs.gita_df.forEach((x) => dummy.push(x.uvacha))
-    console.log("Dummy : ", [...new Set(dummy)]);
+    let sriKrishnaSlokas = allSlokas.filter((x) => x.uvacha == "श्रीभगवान")
+    //console.log("sriKrishnaSlokas : ", sriKrishnaSlokas, allSlokas)
+
+    this.sloka = sriKrishnaSlokas[Math.floor(Math.random() * sriKrishnaSlokas.length)]
+    //console.log("sriKrishnaSlokas : ", sriKrishnaSlokas, allSlokas, this.sloka)
+    let imageList = fbservice.getImageList()
+    this.image = imageList[Math.floor(Math.random() * imageList.length)];
   }
 
   ngOnInit(): void {

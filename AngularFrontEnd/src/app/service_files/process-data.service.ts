@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/compat/storage';
 
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import gDfJson from '../json_files/g_df.json';
 
@@ -11,19 +9,14 @@ import gDfJson from '../json_files/g_df.json';
 })
 export class ProcessDataService {
   gitaJson = gDfJson;
-  constructor(private storage: AngularFireStorage, ) {
+  constructor() {
 
     this.cleanAllSloka();
     this.getWordsForSlokas();
     console.log('Cleansed Sloka : ', this.gitaJson);
     console.log('Wordlist :', this.getAllSlokaWords());
 
-    const fileRef = this.storage.ref('/Counts/NJO2_Slide4.PNG');
-    fileRef.getDownloadURL().subscribe({
-      next(x) { console.log("file ref", x) }
-    })
-
-    console.log("child :", fileRef.child.toString());
+    
 
     //const appCheck = firebase.appCheck();
     // Pass your reCAPTCHA v3 site key (public key) to activate(). Make sure this

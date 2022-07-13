@@ -15,12 +15,15 @@ export class ToolbarComponent implements OnInit {
   options: String[] = [];
   filteredOptions: Observable<String[]>;
 
+  smallerWindow = window.innerWidth < 400 ? true: false;
+
   constructor(public commServ: CommonService) {
     
     this.options = this.commServ.getAllSlokaWords();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value || ''))
+      
     );
   }
 

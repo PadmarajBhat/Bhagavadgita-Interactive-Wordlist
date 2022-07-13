@@ -36,12 +36,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProcessDataService } from './service_files/process-data.service';
 import { SearchResultComponent } from './Components/search-result/search-result.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.prod';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { BellComponentComponent } from './Components/toolbar/bell-component/bell-component.component';
 import { DialogWindowComponent } from './Components/toolbar/bell-component/dialog-window/dialog-window.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProcessUserdataService } from './service_files/process-userdata.service';
 
 
 
@@ -80,8 +82,9 @@ import { DialogWindowComponent } from './Components/toolbar/bell-component/dialo
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase()),
     MatDialogModule,
+    HttpClientModule
   ],
-  providers: [ChapterService, CommonService, ProcessDataService, SearchWordsService, WordcloudService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  providers: [ChapterService, CommonService, ProcessDataService, SearchWordsService, WordcloudService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }, ProcessUserdataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

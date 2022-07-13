@@ -1,61 +1,126 @@
-<link
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet"
-/>
-<mat-toolbar color="primary">
-  <mat-toolbar-row style="display:flex;justify-content:space-between">
-    <span>Bhagavadgita Interactive Wordlist</span>
-    <app-bell-component></app-bell-component>
-    
-  </mat-toolbar-row>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet" />
 
-  <mat-toolbar-row>
-    <form  (submit)="onSearchSubmit(inputSearchText.value)">
-      <mat-form-field appearance="outline">
-        <input
-          type="text"
-          placeholder="Search in Gita"
-          aria-label="Search Text"
-          matInput
-          [formControl]="myControl"
-          [matAutocomplete]="auto"
-          #inputSearchText
-              
-        />
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option
-            *ngFor="let option of filteredOptions | async"
-            [value]="option"
-          >
-            {{ option }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </form>
-    <span class="example-spacer"></span>
-    <button
-      mat-icon-button
-      class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon"
-      (click)="this.commServ.switchTo(2,true)"
-    >
-      <mat-icon>library_books</mat-icon>
-    </button>
-    <button
-      mat-icon-button
-      class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon"
-      (click)="this.commServ.switchTo(3)"
-    >
-      <mat-icon>list</mat-icon>
-    </button>
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
-      (click)="this.commServ.switchTo(4)"
-    >
-      <mat-icon>cloud</mat-icon>
-    </button>
-  </mat-toolbar-row>
+  <mat-toolbar *ngIf="smallerWindow" color="primary">
+    <mat-toolbar-row style="display:flex;justify-content:space-between">
+      <i>
+        Bhagavadgita
+      </i>
+      <app-bell-component></app-bell-component>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <i> Interactive Wordlist</i>
+
+    </mat-toolbar-row>
+    <mat-toolbar-row style="display:flex;justify-content:center">
+      <form class="form-class" [style.fontSize.px]="12" (submit)="onSearchSubmit(inputSearchText.value)">
+        <mat-form-field class="form-field" appearance="outline">
+          <input type="text"
+                 placeholder="Search in Gita"
+                 aria-label="Search Text"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto"
+                 #inputSearchText />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async"
+                        [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+
+
+    </mat-toolbar-row>
+
+    <mat-toolbar-row style="display:flex;justify-content:space-between">
+
+      <!--<span class="example-spacer"></span>-->
+      <button mat-icon-button
+              class="example-icon favorite-icon"
+              aria-label="Example icon-button with heart icon"
+              (click)="this.commServ.switchTo(2,true)">
+        <mat-icon>library_books</mat-icon>
+      </button>
+      <button mat-icon-button
+              class="example-icon favorite-icon"
+              aria-label="Example icon-button with heart icon"
+              (click)="this.commServ.switchTo(3)">
+        <mat-icon>list</mat-icon>
+      </button>
+      <button mat-icon-button
+              class="example-icon"
+              aria-label="Example icon-button with share icon"
+              (click)="this.commServ.switchTo(4)">
+        <mat-icon>cloud</mat-icon>
+      </button>
+
+      <button mat-icon-button>
+        <mat-icon>
+          <span class="material-symbols-sharp">
+            public
+          </span>
+        </mat-icon>
+      </button>
+
+
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+<mat-toolbar *ngIf="!smallerWindow" color="primary">
+    <mat-toolbar-row style="display:flex;justify-content:space-between">
+      <i>Bhagavadgita Interactive Wordlist</i>
+      <app-bell-component></app-bell-component>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row style="display:flex;justify-content:space-between">
+      <form class="form-class" [style.fontSize.px]="12" (submit)="onSearchSubmit(inputSearchText.value)">
+        <mat-form-field class="form-field" appearance="outline">
+          <input type="text"
+                 placeholder="Search in Gita"
+                 aria-label="Search Text"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto"
+                 #inputSearchText />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async"
+                        [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+      
+      <div>
+        <button mat-icon-button
+                class="example-icon favorite-icon"
+                aria-label="Example icon-button with heart icon"
+                (click)="this.commServ.switchTo(2,true)">
+          <mat-icon>library_books</mat-icon>
+        </button>
+        <button mat-icon-button
+                class="example-icon favorite-icon"
+                aria-label="Example icon-button with heart icon"
+                (click)="this.commServ.switchTo(3)">
+          <mat-icon>list</mat-icon>
+        </button>
+        <button mat-icon-button
+                class="example-icon"
+                aria-label="Example icon-button with share icon"
+                (click)="this.commServ.switchTo(4)">
+          <mat-icon>cloud</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>
+            <span class="material-symbols-sharp">
+              public
+            </span>
+          </mat-icon>
+        </button>
+
+      </div>
+    </mat-toolbar-row>
 </mat-toolbar>
