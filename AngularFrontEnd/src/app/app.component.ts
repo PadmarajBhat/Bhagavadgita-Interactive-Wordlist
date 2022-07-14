@@ -27,11 +27,15 @@ export class AppComponent {
         console.log("Login Completion : ", x);
 
         this.loggedIn = x.user ? x.user.emailVerified : this.loggedIn;
+        if (this.loggedIn) {
+          this.commServ.setUserDetails(x.additionalUserInfo)
+        }
       });
     }
     else {
 
       this.loggedIn = true;
+      this.commServ.setUserDetails({name:"Padmaraj",email:"padmarajbhat@gmail.com"})
     }
 
 }

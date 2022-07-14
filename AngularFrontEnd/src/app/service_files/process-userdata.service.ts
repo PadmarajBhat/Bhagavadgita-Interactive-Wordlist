@@ -72,4 +72,13 @@ export class ProcessUserdataService {
     this.updateUserHistory();
   }
 
+  setUserDetails(userDetails: any) {
+    this.myIpHistory['userDetails'] = userDetails
+    this.updateUserHistory();
+  }
+
+  addUserFeedback(feedBack:any) {
+
+  }
+
 }

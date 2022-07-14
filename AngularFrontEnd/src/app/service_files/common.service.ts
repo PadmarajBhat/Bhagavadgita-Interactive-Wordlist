@@ -76,4 +76,11 @@ export class CommonService {
   setBellCounter() {
     this.processUserDataService.setBellCounter();
   }
+
+  setUserDetails(userDetails: any) {
+    this.processUserDataService.setUserDetails(userDetails);
+  }
+  addFeedbackToDB(userFeedback: any) {
+    this.processUserDataService.addUserFeedback(userFeedback);
+  }
 }

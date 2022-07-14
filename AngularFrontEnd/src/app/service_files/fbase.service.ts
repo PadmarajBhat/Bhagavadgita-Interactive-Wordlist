@@ -54,4 +54,8 @@ export class FbaseService {
     //this.gCounter.subscribe((data) => { counter = data.count; console.log("Data at buttong :", data,++counter); });
     this.db.collection('Counter').doc('count').update({ count: countValue });
   }
+
+  addFeedbackDB(userFeedabck: any) {
+    this.db.collection('Feedback').add(userFeedabck).then((doc) => {console.log("Added Feedback : ", doc) })
+  }
 }

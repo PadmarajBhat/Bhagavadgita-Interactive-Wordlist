@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommonService } from '../../../../service_files/common.service';
 
 @Component({
   selector: 'app-feedback',
@@ -15,7 +16,7 @@ export class FeedbackComponent implements OnInit {
       Validators.required,
       Validators.minLength(4)]),
   });
-  constructor() {
+  constructor(private cs: CommonService) {
    
 }
 
@@ -24,6 +25,7 @@ export class FeedbackComponent implements OnInit {
 
   submitFeedBack() {
     console.log("Feedback Submitted", this.profileForm.value);
+    this.cs.addFeedbackToDB(this.profileForm.value);
   }
 
 }
