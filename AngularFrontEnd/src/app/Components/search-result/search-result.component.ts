@@ -15,6 +15,7 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0, 0);
   }
   
   ngAfterViewInit() {
@@ -24,6 +25,7 @@ export class SearchResultComponent implements OnInit {
     event.stopPropagation();
     console.log('onWordClick', searchString);
     this.commServ.search(searchString);
+    window.scroll(0, 0);
   }
 
   getUvachaResult(uvachaName: string) {
