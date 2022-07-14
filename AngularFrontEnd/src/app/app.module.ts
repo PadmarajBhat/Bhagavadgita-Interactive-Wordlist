@@ -20,6 +20,9 @@ import { MatRippleModule } from '@angular/material/core';
 import { AngularD3CloudModule } from 'angular-d3-cloud';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 
 import { SearchWordsService } from './service_files/search-words.service';
@@ -44,6 +47,8 @@ import { BellComponentComponent } from './Components/toolbar/bell-component/bell
 import { DialogWindowComponent } from './Components/toolbar/bell-component/dialog-window/dialog-window.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProcessUserdataService } from './service_files/process-userdata.service';
+import { MenuItemsComponent } from './Components/toolbar/menu-items/menu-items.component';
+import { FeedbackComponent } from './Components/toolbar/menu-items/feedback/feedback.component';
 
 
 
@@ -56,7 +61,9 @@ import { ProcessUserdataService } from './service_files/process-userdata.service
     SearchResultComponent,
     WordcloudComponent,
     BellComponentComponent,
-    DialogWindowComponent
+    DialogWindowComponent,
+    MenuItemsComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +89,9 @@ import { ProcessUserdataService } from './service_files/process-userdata.service
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase()),
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule,
+    MatMenuModule
   ],
   providers: [ChapterService, CommonService, ProcessDataService, SearchWordsService, WordcloudService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }, ProcessUserdataService],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@
 
   <mat-toolbar *ngIf="smallerWindow" color="primary">
     <mat-toolbar-row style="display:flex;justify-content:space-between">
+      <app-menu-items></app-menu-items>
       <i>
         Bhagavadgita
       </i>
@@ -37,26 +38,29 @@
     <mat-toolbar-row style="display:flex;justify-content:space-between">
 
       <!--<span class="example-spacer"></span>-->
-      <button mat-icon-button
+      <button matTooltip="Gita Chapters" matTooltipPosition="above"
+              mat-icon-button
               class="example-icon favorite-icon"
               aria-label="Example icon-button with heart icon"
               (click)="this.commServ.switchTo(2,true)">
         <mat-icon>library_books</mat-icon>
       </button>
-      <button mat-icon-button
+
+      <button mat-icon-button matTooltip="Word List" matTooltipPosition="above"
+
               class="example-icon favorite-icon"
               aria-label="Example icon-button with heart icon"
               (click)="this.commServ.switchTo(3)">
         <mat-icon>list</mat-icon>
       </button>
-      <button mat-icon-button
+      <button mat-icon-button matTooltip="Word Cloud" matTooltipPosition="above"
               class="example-icon"
               aria-label="Example icon-button with share icon"
               (click)="this.commServ.switchTo(4)">
         <mat-icon>cloud</mat-icon>
       </button>
 
-      <button mat-icon-button>
+      <button mat-icon-button >
         <mat-icon>
           <span class="material-symbols-sharp">
             public
@@ -71,7 +75,10 @@
 
 <mat-toolbar *ngIf="!smallerWindow" color="primary">
     <mat-toolbar-row style="display:flex;justify-content:space-between">
-      <i>Bhagavadgita Interactive Wordlist</i>
+      <div>
+        <app-menu-items></app-menu-items>
+        <i>Bhagavadgita Interactive Wordlist</i>
+      </div>
       <app-bell-component></app-bell-component>
     </mat-toolbar-row>
 
@@ -95,25 +102,25 @@
       </form>
       
       <div>
-        <button mat-icon-button
+        <button mat-icon-button matTooltip="Gita Chapters" matTooltipPosition="above"
                 class="example-icon favorite-icon"
                 aria-label="Example icon-button with heart icon"
                 (click)="this.commServ.switchTo(2,true)">
           <mat-icon>library_books</mat-icon>
         </button>
-        <button mat-icon-button
+        <button mat-icon-button matTooltip="Word List" matTooltipPosition="above"
                 class="example-icon favorite-icon"
                 aria-label="Example icon-button with heart icon"
                 (click)="this.commServ.switchTo(3)">
           <mat-icon>list</mat-icon>
         </button>
-        <button mat-icon-button
+        <button mat-icon-button matTooltip="Word Cloud" matTooltipPosition="above"
                 class="example-icon"
                 aria-label="Example icon-button with share icon"
                 (click)="this.commServ.switchTo(4)">
           <mat-icon>cloud</mat-icon>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button matTooltip="Take a Tour" matTooltipPosition="above">
           <mat-icon>
             <span class="material-symbols-sharp">
               public
