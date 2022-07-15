@@ -31,17 +31,21 @@ export class ToolbarComponent implements OnInit {
     
   }
   private _filter(value: string): String[] {
-    const filterValue = value.toLowerCase();
+    const filterValue = value.toLowerCase().trim();
 
-    if (value.length > (window.innerWidth > 400 ? 2 : 3)) {
-      this.commServ.search(filterValue);
+    if (filterValue.length > (window.innerWidth > 400 ? 2 : 3)) {
+
+      this.commServ.search(filterValue.trim());
     }
     return this.options
       .filter((option) => option.toLowerCase().includes(filterValue))
       .slice(0, 50);
   }
   onSearchSubmit(searchString: string) {
-    console.log('calling service ', searchString);
-    this.commServ.search(searchString);
+    searchString = searchString.trim()
+    if (searchString != '') {
+      console.log('calling service ', searchString);
+      this.commServ.search(searchString);
+    }
   }
 }

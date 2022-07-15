@@ -39,11 +39,12 @@ export class ProcessDataService {
     console.log(sloka);
     let line = sloka.split('|');
     for (let word of line[0].split(' ')) {
-      if (word.length > 0) wordsList.push(word.replace(/' '/g, ''));
+      //if (word.length > 0) wordsList.push(word.replace(/' '/g, ''));
+      if (word.length > 0) wordsList.push(word.trim());
     }
 
     for (let word of line[1].split(' ')) {
-      if (word.length > 0) wordsList.push(word.replace(/' '/g, ''));
+      if (word.length > 0) wordsList.push(word.trim());
     }
     return wordsList;
   }
@@ -68,9 +69,10 @@ export class ProcessDataService {
   getWordsForSlokas() {
     for (let row of this.gitaJson) {
       row['words'] = this.getSlokaWords(row['cleansed_sloka']);
-      row['t_words'] = row['cleansed_t_sloka']
+      row['t_words'] = [];
+      row['cleansed_t_sloka']
         .replace(/'\\n'/g, ' ')
-          .split(' ');
+        .split(' ').forEach(word => row['t_words'].push(word.trim()));
     }
   }
 

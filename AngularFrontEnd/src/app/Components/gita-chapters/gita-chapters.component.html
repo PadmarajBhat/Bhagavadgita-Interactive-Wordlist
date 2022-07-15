@@ -42,23 +42,23 @@
              *ngFor="let word of line.split(' ')"
              (click)="
               this.oneWordClick(
-                word.replaceAll('\n', '').replaceAll(' ', ''),
+                word.trim(),
                 sloka
               )
             "
              [style.margin-right.px]="2">
             <span *ngIf="
-                word.replaceAll('\n', '').replaceAll(' ', '') ==
+                word.trim() ==
                 this.commServe.getSearchText()
               "
-                  color="warn">
-              {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
+                  style="color:blue;font-weight:bold">
+              {{ word.trim() }}
             </span>
             <span *ngIf="
-                word.replaceAll('\n', '').replaceAll(' ', '') !=
+                word.trim() !=
                 this.commServe.getSearchText()
               ">
-              {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
+              {{ word.trim() }}
             </span>
           </a>
           <span *ngIf="!last">|</span>
@@ -83,24 +83,24 @@
              *ngFor="let word of line.split(' ')"
              (click)="
               this.oneWordClick(
-                word.replaceAll('\n', '').replaceAll(' ', ''),
+                word.trim(),
                 sloka
               )
             "
              [style.margin-right.px]="2"
              [id]="sloka.chapter_number + '.' + sloka.verse_number">
             <span *ngIf="
-                word.replaceAll('\n', '').replaceAll(' ', '') ==
+                word.trim() ==
                 this.commServe.getSearchText()
               "
-                  style="color:blue">
-              {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
+                  style="color:blue;font-weight:bold">
+              {{ word.trim() }}
             </span>
             <span *ngIf="
-                word.replaceAll('\n', '').replaceAll(' ', '') !=
+                word.trim() !=
                 this.commServe.getSearchText()
               ">
-              {{ word.replaceAll('\n', '').replaceAll(' ', '') }}
+              {{ word.trim() }}
             </span>
           </a>
         </mat-card-content>
