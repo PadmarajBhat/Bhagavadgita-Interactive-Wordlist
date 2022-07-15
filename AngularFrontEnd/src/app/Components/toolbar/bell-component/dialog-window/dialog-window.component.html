@@ -1,14 +1,12 @@
-<mat-card>
+<mat-card >
   <mat-card-title style="font-weight:bold;display:flex;justify-content:center">श्रीकृष्णाय नमः</mat-card-title>
-  <mat-dialog-content>
-    <img mat-card-image src={{image|async}} alt="श्रीकृष्णाय नमः">
+    <img mat-card-image [style.height.px]="imageHeight" src={{image|async}} alt="श्रीकृष्णाय नमः">
 
     <mat-card-content *ngFor="let line of sloka.text.split('\n\n')">
       <span style="display:flex;justify-content:center">{{line}}</span>
     </mat-card-content>
     <mat-card-content style="font-weight: bold;display:flex; justify-content: center">जय श्रीकृष्ण</mat-card-content>
 
-  </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Close</button>
   </mat-dialog-actions>

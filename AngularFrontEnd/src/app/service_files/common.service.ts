@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Constants } from '../Interface_Files/constants.enum';
 import { ChapterService } from './chapter.service';
+import { FbaseService } from './fbase.service';
 import { ProcessDataService } from './process-data.service';
 import { ProcessUserdataService } from './process-userdata.service';
 import { SearchWordsService } from './search-words.service';
@@ -15,7 +16,8 @@ export class CommonService {
     private chapterService: ChapterService,
     private wordCloudService: WordcloudService,
     private processDataService: ProcessDataService,
-    private processUserDataService: ProcessUserdataService
+    private processUserDataService: ProcessUserdataService,
+    private fireBaseService: FbaseService
   ) {
 
     let defaultServiceToLaunch = [Constants.WORD_LIST, Constants.WORD_CLOUD, Constants.GITA_CHAPTERS]
@@ -81,6 +83,7 @@ export class CommonService {
     this.processUserDataService.setUserDetails(userDetails);
   }
   addFeedbackToDB(userFeedback: any) {
-    this.processUserDataService.addUserFeedback(userFeedback);
+    this.processUserDataService.updateUserDetailsInFeedback(userFeedback)
+    this.fireBaseService.addFeedbackToDB(userFeedback);
   }
 }

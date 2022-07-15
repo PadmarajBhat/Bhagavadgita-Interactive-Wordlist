@@ -35,7 +35,7 @@ export class AppComponent {
     else {
 
       this.loggedIn = true;
-      this.commServ.setUserDetails({name:"Padmaraj",email:"padmarajbhat@gmail.com"})
+      this.commServ.setUserDetails({ 'profile': { 'name': "Padmaraj", 'email': "padmarajbhat@gmail.com" } })
     }
 
 }

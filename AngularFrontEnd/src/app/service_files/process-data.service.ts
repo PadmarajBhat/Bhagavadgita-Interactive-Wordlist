@@ -35,8 +35,9 @@ export class ProcessDataService {
   }
 
   getSlokaWords(sloka: string) {
-    let wordsList: String[] =[];
-    let line = sloka.split('।');
+    let wordsList: String[] = [];
+    console.log(sloka);
+    let line = sloka.split('|');
     for (let word of line[0].split(' ')) {
       if (word.length > 0) wordsList.push(word.replace(/' '/g, ''));
     }
@@ -53,7 +54,7 @@ export class ProcessDataService {
       row['words']?.forEach((x: any) => wordList.push(x));
       row['t_words']?.forEach((x: any) => wordList.push(x));
 
-      lines = row['cleansed_sloka']?.split('।');
+      lines = row['cleansed_sloka']?.split('|');
       wordList.push(lines[0]);
       wordList.push(lines[1]);
 
@@ -75,15 +76,20 @@ export class ProcessDataService {
 
   cleanAllSloka() {
     for (let row of this.gitaJson) {
-      row['cleansed_sloka'] = row['text']
-        .replace('।।\n ', '।।')
-        .replace('।\n\n', ' । ')
+       let tempString:String = row['text']
+        .replace('।।\n ', '||')
+        .replace('।\n\n', ' | ')
+        .replace(/'।'/g, '|')
+        .replace('।।', '||')
+         .replace('।।', '||')
+         .replace('।','|')
         .replace('धृतराष्ट्र उवाच\n\n', '')
         .replace('सञ्जय उवाच\n\n', '')
         .replace('अर्जुन उवाच\n\n', '')
         .replace('श्री भगवानुवाच\n\n', '')
         .replace('श्री भगवानुवाच', '')
         .replace(/\n\n/g, ' ');
+      row['cleansed_sloka'] = tempString;
 
       row['cleansed_t_sloka'] = row['transliteration']
         .replace('śhrī-bhagavān uvācha\n', '')

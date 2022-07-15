@@ -20,14 +20,13 @@ export class FbaseService {
   }
 
 
-  getIpDetails(ipv4:String) {
-
+  getUserDetails(emailId:String) {
+    console.log("Email Id to Search : ", emailId);
     let userDetailsRef = this.db.collection('UserDetails');
-    return userDetailsRef.ref.where('IPv4','==',ipv4).get()
-    
-
+    return userDetailsRef.ref.where('emailId', '==', emailId).get()
   }
-  updateIpDetails(docId: string, document: any) {
+
+  updateUserDoc(docId: string, document: any) {
 
     console.log("updateIpDetails : ", docId, document)
     if (docId == '') {
@@ -55,7 +54,8 @@ export class FbaseService {
     this.db.collection('Counter').doc('count').update({ count: countValue });
   }
 
-  addFeedbackDB(userFeedabck: any) {
+  addFeedbackToDB(userFeedabck: any) {
+    console.log("Adding the feedback :", userFeedabck);
     this.db.collection('Feedback').add(userFeedabck).then((doc) => {console.log("Added Feedback : ", doc) })
   }
 }

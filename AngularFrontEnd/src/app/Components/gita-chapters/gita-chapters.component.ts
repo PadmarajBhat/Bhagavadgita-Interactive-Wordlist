@@ -77,7 +77,7 @@ export class GitaChaptersComponent implements OnInit {
     }
 
     slokaContext.cleansed_sloka
-      .split('।')
+      .split('|')
       .slice(0, 2)
       .forEach((line) => lines.push(line));
 

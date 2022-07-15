@@ -11,6 +11,7 @@ import { FbaseService } from '../../../../service_files/fbase.service';
 export class DialogWindowComponent implements OnInit {
   sloka: any;
   image: any;
+  imageHeight = (window.innerWidth > 400) ? window.innerHeight * 0.5 : window.innerHeight *.3;
   constructor(cs: CommonService, fbservice: FbaseService) {
     let allSlokas = cs.gita_df;
 

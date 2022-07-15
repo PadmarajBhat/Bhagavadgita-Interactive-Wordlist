@@ -110,7 +110,7 @@ export class SearchResultComponent implements OnInit {
     let sloka = item['cleansed_sloka']
     //console.log("What is in : ", item, sloka);
 
-    let lines = sloka.split('।').slice(0, 2);
+    let lines = sloka.split('|').slice(0, 2);
     
     let slokaWordArray = this.returnWordStructureArray(sloka, lines);
 
