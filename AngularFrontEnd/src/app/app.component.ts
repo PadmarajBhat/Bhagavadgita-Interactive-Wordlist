@@ -23,7 +23,7 @@ export class AppComponent {
       }
     })
 
-    if (!environment.production) {
+    if (environment.production) {
       this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((x) => {
         console.log("Login Completion : ", x);
 
@@ -35,8 +35,8 @@ export class AppComponent {
     }
     else {
 
-      this.loggedIn = false;
-     // this.commServ.setUserDetails({ 'profile': { 'name': "Padmaraj", 'email': "padmarajbhat@gmail.com" } })
+      this.loggedIn = true;
+      this.commServ.setUserDetails({ 'profile': { 'name': "Padmaraj", 'email': "padmarajbhat@gmail.com" } })
     }
 
 }
