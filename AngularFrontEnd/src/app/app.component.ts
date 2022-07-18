@@ -23,7 +23,7 @@ export class AppComponent {
       }
     })
 
-    if (environment.production) {
+    if (!environment.production) {
       this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((x) => {
         console.log("Login Completion : ", x);
 
