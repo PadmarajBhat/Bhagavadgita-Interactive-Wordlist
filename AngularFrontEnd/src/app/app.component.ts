@@ -15,6 +15,7 @@ declare const gtag: Function;
 })
 export class AppComponent {
   loggedIn = false;
+  margin_top = (window.innerWidth < 400) ? 50 : 20;
   constructor(public commServ: CommonService, private router: Router, public auth: AngularFireAuth) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -22,7 +23,7 @@ export class AppComponent {
       }
     })
 
-    if (environment.production) {
+    if (!environment.production) {
       this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((x) => {
         console.log("Login Completion : ", x);
 
@@ -34,8 +35,8 @@ export class AppComponent {
     }
     else {
 
-      this.loggedIn = true;
-      this.commServ.setUserDetails({ 'profile': { 'name': "Padmaraj", 'email': "padmarajbhat@gmail.com" } })
+      this.loggedIn = false;
+     // this.commServ.setUserDetails({ 'profile': { 'name': "Padmaraj", 'email': "padmarajbhat@gmail.com" } })
     }
 
 }

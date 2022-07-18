@@ -12,12 +12,21 @@
   </button>
 </div>
 <div *ngIf="!loggedIn">
-  <mat-card>
-    <mat-card-title>
-      Allow Pop up when prompted !!!
+  <mat-card [style.margin-top.%]="margin_top">
+    <mat-card-title style="display:flex;justify-content:center">
+      <b>स्वागतम्</b>
     </mat-card-title>
-    <mat-card-subtitle>
-      Firebase Signin in progress....
+    <mat-card-subtitle style="display:flex;justify-content:center">
+      <span><b>Welcome </b>  Geeta Learners !!!!</span>
     </mat-card-subtitle>
+    <mat-card-content style="display:flex;justify-content:center">
+      In order to access the content, you need to login through your gmail account.
+    </mat-card-content>
+    <mat-card-content style="display:flex;justify-content:center">
+      A popup window would help you to login.
+    </mat-card-content>
+    <mat-card-content style="display:flex;justify-content:center">
+      <span>Please <b> allow popup </b>in your browser.</span>
+    </mat-card-content>
   </mat-card>
 </div>
