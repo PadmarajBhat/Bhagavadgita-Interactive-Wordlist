@@ -15,7 +15,9 @@ declare const gtag: Function;
 })
 export class AppComponent {
   loggedIn = false;
-  margin_top = (window.innerWidth < 400) ? 50 : 20;
+  disableButton = true;
+  signInButtonText = "Loading...";
+  margin_top = (window.innerWidth < 400) ? 50 : 10;
   constructor(public commServ: CommonService, private router: Router, public auth: AngularFireAuth) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -23,23 +25,36 @@ export class AppComponent {
       }
     })
 
-    if (environment.production) {
-      this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((x) => {
-        console.log("Login Completion : ", x);
-
-        this.loggedIn = x.user ? x.user.emailVerified : this.loggedIn;
+    this.auth.getRedirectResult().then((result) => {
+      if (result.user || firebase.auth().currentUser) {
+        this.loggedIn = true;
+        console.log("Login Reply : ", result);
+        this.loggedIn = result.user ? result.user.emailVerified : this.loggedIn;
         if (this.loggedIn) {
-          this.commServ.setUserDetails(x.additionalUserInfo)
+          this.commServ.setUserDetails(result.additionalUserInfo)
         }
-      });
-    }
-    else {
+      }
+      else {
+        this.disableButton = false;
+        this.signInButtonText = "Sign in with Google";
+        //if (!environment.production) {
+        //  this.loggedIn = true;
+        //  this.commServ.setUserDetails({ 'profile': { 'name': "Padmaraj", 'email': "padmarajbhat@gmail.com" } })
+        //}
+      }
+    })
+  }
 
-      this.loggedIn = true;
-      this.commServ.setUserDetails({ 'profile': { 'name': "Padmaraj", 'email': "padmarajbhat@gmail.com" } })
-    }
+  signIn() {
+    //this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((x) => {
+    this.disableButton = true;
+    this.signInButtonText = "Loading...";
+    this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()).then((x) => {
+      console.log("Login Completion : ", x);
+    });
 
-}
+  }
+
   scrollUp() {
     console.log("scrollUp");
     window.scroll({

@@ -11,7 +11,7 @@
     <mat-icon>arrow_upward</mat-icon>
   </button>
 </div>
-<div *ngIf="!loggedIn">
+<div *ngIf="!loggedIn" style="display:flex;justify-content:center">
   <mat-card [style.margin-top.%]="margin_top">
     <mat-card-title style="display:flex;justify-content:center">
       <b>स्वागतम्</b>
@@ -19,22 +19,27 @@
     <mat-card-subtitle style="display:flex;justify-content:center">
       <span><b>Welcome </b>  Geeta Learners !!!!</span>
     </mat-card-subtitle>
-    <mat-card-content style="display:flex;justify-content:center">
+    <!--<mat-card-content style="display:flex;justify-content:center">
       Use Google Chrome Browser !!!!
-    </mat-card-content>
-    <mat-card-content style="display:flex;justify-content:center">
-      In order to access the content, you need to login through your gmail account.
-    </mat-card-content>
-    <mat-card-content style="display:flex;justify-content:center">
-      A popup window would help you to login.
-    </mat-card-content>
-    <mat-card-content style="display:flex;justify-content:center">
-      <span>Please <b> allow popup </b>in your browser.</span>
-    </mat-card-content>
-    <mat-card-content style="display:flex;justify-content:center"><i>on Desktop</i></mat-card-content>
+    </mat-card-content>-->
+    <!--<mat-card-content style="display:flex;justify-content:center">
+      <span>In order to access the content, you need to <b>Sign in with Google</b> </span>
+    </mat-card-content>-->
+    <!--<mat-card-content style="display:flex;justify-content:center">
+    A popup window would help you to login.
+  </mat-card-content>
+  <mat-card-content style="display:flex;justify-content:center">
+    <span>Please <b> allow popup </b>in your browser.</span>
+  </mat-card-content>-->
+    <!--<mat-card-content style="display:flex;justify-content:center"><i>on Desktop</i></mat-card-content>
 
-    <img mat-card-image src=".\assets\image_files\LoginDesktop.jpeg" />
-    <mat-card-content style="display:flex;justify-content:center"><i>on Mobile</i></mat-card-content>
-    <img mat-card-image src=".\assets\image_files\LoginMobile.jpeg" />
+  <img mat-card-image src=".\assets\image_files\LoginDesktop.jpeg" />
+  <mat-card-content style="display:flex;justify-content:center"><i>on Mobile</i></mat-card-content>
+  <img mat-card-image src=".\assets\image_files\LoginMobile.jpeg" />-->
+
+    <mat-card-actions  align="end">
+      <button mat-raised-button [disabled]="disableButton" (click)="signIn()"><b>{{signInButtonText}}</b></button>
+    </mat-card-actions>
   </mat-card>
+
 </div>

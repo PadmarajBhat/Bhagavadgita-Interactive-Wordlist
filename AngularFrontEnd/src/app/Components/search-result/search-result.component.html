@@ -7,9 +7,9 @@
 <mat-card *ngIf="this.commServ.getSearchFound()">
   <mat-card-title style="display:flex;justify-content:center">Search Results</mat-card-title>
   <mat-card-title>
-    {{ commServ.getSearchResult().length }} sloka(s) of '{{
+    {{ commServ.getSearchResult().length }} sloka(s) has '{{
       this.commServ.getSearchText()
-    }}' are:
+    }}'
   </mat-card-title>
 
   <div *ngFor="let uvacha of this.uvacha_list">

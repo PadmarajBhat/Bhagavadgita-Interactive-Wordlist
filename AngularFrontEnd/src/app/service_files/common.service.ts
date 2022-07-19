@@ -22,6 +22,7 @@ export class CommonService {
 
     let defaultServiceToLaunch = [Constants.WORD_LIST, Constants.WORD_CLOUD, Constants.GITA_CHAPTERS]
     this.componentIndicator = defaultServiceToLaunch[Math.floor(Math.random() * defaultServiceToLaunch.length)];
+    this.componentIndicator = Constants.GITA_CHAPTERS;
     this.gita_df = this.searchService.gitaJson;
   }
 
