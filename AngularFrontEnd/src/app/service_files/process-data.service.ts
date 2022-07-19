@@ -36,7 +36,7 @@ export class ProcessDataService {
 
   getSlokaWords(sloka: string) {
     let wordsList: String[] = [];
-    console.log(sloka);
+    //console.log(sloka);
     let line = sloka.split('|');
     for (let word of line[0].split(' ')) {
       //if (word.length > 0) wordsList.push(word.replace(/' '/g, ''));

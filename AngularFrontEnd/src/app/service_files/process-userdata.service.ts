@@ -80,8 +80,8 @@ export class ProcessUserdataService {
   }
 
   setUserDetails(userDetails: any) {
-    this.myData['emailId'] = userDetails.profile.email;
-    this.myData['name'] = userDetails.profile.name;
+    this.myData['emailId'] = userDetails.email;
+    this.myData['name'] = userDetails.name;
     this.getUserHistory();
     //this.updateUserDocument(); //cause 2 entries as getUserHistory is not completed
   }

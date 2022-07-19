@@ -13,12 +13,24 @@
 </mat-card>
   <mat-card >
     <mat-card-title style="display:flex;justify-content:center">
-      ' {{getDevanagariChar(letterSelected)}} ' has {{this.wordArray.length}} words
+      {{this.wordArray.length}} words starts with ' {{getDevanagariChar(letterSelected)}} '
     </mat-card-title>
     <mat-card-subtitle>Click on a word to search its occurrences !!!</mat-card-subtitle>
     <mat-card-content>
       <mat-grid-list [cols]="this.noOfCols" rowHeight="5:1">
         <mat-grid-tile *ngFor="let word of wordArray"><button mat-button (click)="oneWordClick(word)">{{ word }}</button></mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="this.hasWordArray.length > 0">
+    <mat-card-title style="display:flex;justify-content:center">
+      {{this.hasWordArray.length}} words have ' {{getDevanagariChar(letterSelected)}} ' in it
+    </mat-card-title>
+    <mat-card-subtitle>Click on a word to search its occurrences !!!</mat-card-subtitle>
+    <mat-card-content>
+      <mat-grid-list [cols]="this.noOfCols" rowHeight="5:1">
+        <mat-grid-tile *ngFor="let word of hasWordArray"><button mat-button (click)="oneWordClick(word)">{{ word }}</button></mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>
   </mat-card>

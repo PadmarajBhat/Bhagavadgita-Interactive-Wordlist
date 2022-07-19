@@ -4,7 +4,6 @@ import { CommonService } from './service_files/common.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
-import { environment } from '../environments/environment';
 
 declare const gtag: Function;
 
@@ -28,25 +27,20 @@ export class AppComponent {
     this.auth.getRedirectResult().then((result) => {
       if (result.user || firebase.auth().currentUser) {
         this.loggedIn = true;
-        console.log("Login Reply : ", result);
-        this.loggedIn = result.user ? result.user.emailVerified : this.loggedIn;
+        console.log("Login Reply : ", result, firebase.auth());
+        //this.loggedIn = firebase.auth().currentUser?.emailVerified ? true : this.loggedIn;
         if (this.loggedIn) {
-          this.commServ.setUserDetails(result.additionalUserInfo)
+          this.commServ.setUserDetails(firebase.auth().currentUser)
         }
       }
       else {
         this.disableButton = false;
         this.signInButtonText = "Sign in with Google";
-        //if (!environment.production) {
-        //  this.loggedIn = true;
-        //  this.commServ.setUserDetails({ 'profile': { 'name': "Padmaraj", 'email': "padmarajbhat@gmail.com" } })
-        //}
       }
     })
   }
 
   signIn() {
-    //this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((x) => {
     this.disableButton = true;
     this.signInButtonText = "Loading...";
     this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()).then((x) => {
