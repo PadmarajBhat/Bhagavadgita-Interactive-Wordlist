@@ -62,7 +62,8 @@
         <mat-icon>cloud</mat-icon>
       </button>
 
-      <button mat-icon-button matTooltip="Take a Tour" matTooltipPosition="below">
+      <button mat-icon-button matTooltip="Take a Tour" matTooltipPosition="below"
+              (click)="this.commServ.switchTo(5)">
         <mat-icon>
           <span class="material-symbols-sharp">
             public
@@ -122,7 +123,8 @@
                 (click)="this.commServ.switchTo(4)">
           <mat-icon>cloud</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Take a Tour" matTooltipPosition="below">
+        <button mat-icon-button matTooltip="Take a Tour" matTooltipPosition="below"
+                (click)="this.commServ.switchTo(5)">
           <mat-icon>
             <span class="material-symbols-sharp">
               public

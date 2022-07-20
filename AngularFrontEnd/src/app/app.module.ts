@@ -49,6 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProcessUserdataService } from './service_files/process-userdata.service';
 import { MenuItemsComponent } from './Components/toolbar/menu-items/menu-items.component';
 import { FeedbackComponent } from './Components/toolbar/menu-items/feedback/feedback.component';
+import { TakeATourComponent } from './Components/toolbar/take-atour/take-atour.component';
 
 
 
@@ -63,7 +64,8 @@ import { FeedbackComponent } from './Components/toolbar/menu-items/feedback/feed
     BellComponentComponent,
     DialogWindowComponent,
     MenuItemsComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    TakeATourComponent
   ],
   imports: [
     BrowserModule,
