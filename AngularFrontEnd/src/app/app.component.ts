@@ -16,7 +16,7 @@ export class AppComponent {
   loggedIn = false;
   disableButton = true;
   signInButtonText = "Loading...";
-  margin_top = (window.innerWidth < 400) ? 50 : 10;
+  margin_top = (window.innerWidth < 400) ? 10 : 0;
   constructor(public commServ: CommonService, private router: Router, public auth: AngularFireAuth) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -35,7 +35,7 @@ export class AppComponent {
       }
       else {
         this.disableButton = false;
-        this.signInButtonText = "Sign in with Google";
+        this.signInButtonText = "Click Below to Sign in with Google";
       }
     })
   }

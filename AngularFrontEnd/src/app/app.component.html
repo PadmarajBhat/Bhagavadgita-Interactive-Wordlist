@@ -14,32 +14,54 @@
 <div *ngIf="!loggedIn" style="display:flex;justify-content:center">
   <mat-card [style.margin-top.%]="margin_top">
     <mat-card-title style="display:flex;justify-content:center">
-      <b>स्वागतम्</b>
+      <b>|| स्वागतम् ||</b>
+
     </mat-card-title>
-    <mat-card-subtitle style="display:flex;justify-content:center">
-      <span><b>Welcome </b>  Geeta Learners !!!!</span>
+
+    <mat-divider></mat-divider>
+    <mat-card-subtitle style="display:flex;justify-content:center;margin-top:5%">
+      <span><b>Welcome,</b>  Geeta Learners !!!</span>
     </mat-card-subtitle>
-    <!--<mat-card-content style="display:flex;justify-content:center">
-      Use Google Chrome Browser !!!!
-    </mat-card-content>-->
-    <!--<mat-card-content style="display:flex;justify-content:center">
-      <span>In order to access the content, you need to <b>Sign in with Google</b> </span>
-    </mat-card-content>-->
-    <!--<mat-card-content style="display:flex;justify-content:center">
+    <mat-card-content style="display: flex; justify-content: center; margin-top: 15%">
+      <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNDgiIGhlaWdodD0iNDgiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBmaWxsPSIjNGNhZjUwIiBkPSJNNDQsMjRjMCwxMS4wNDQtOC45NTYsMjAtMjAsMjBTNCwzNS4wNDQsNCwyNFMxMi45NTYsNCwyNCw0UzQ0LDEyLjk1Niw0NCwyNHoiPjwvcGF0aD48cGF0aCBmaWxsPSIjZmZjMTA3IiBkPSJNMjQsNHYyMGw4LDRsLTguODQzLDE2YzAuMzE3LDAsMC41MjYsMCwwLjg0MywwYzExLjA1MywwLDIwLTguOTQ3LDIwLTIwUzM1LjA1Myw0LDI0LDR6Ij48L3BhdGg+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTQ0LDI0YzAsMTEuMDQ0LTguOTU2LDIwLTIwLDIwUzQsMzUuMDQ0LDQsMjRTMTIuOTU2LDQsMjQsNFM0NCwxMi45NTYsNDQsMjR6Ij48L3BhdGg+PHBhdGggZmlsbD0iI2ZmYzEwNyIgZD0iTTI0LDR2MjBsOCw0bC04Ljg0MywxNmMwLjMxNywwLDAuNTI2LDAsMC44NDMsMGMxMS4wNTMsMCwyMC04Ljk0NywyMC0yMFMzNS4wNTMsNCwyNCw0eiI+PC9wYXRoPjxwYXRoIGZpbGw9IiNmNDQzMzYiIGQ9Ik00MS44NCwxNUgyNHYxM2wtMy0xTDcuMTYsMTMuMjZINy4xNEMxMC42OCw3LjY5LDE2LjkxLDQsMjQsNEMzMS44LDQsMzguNTUsOC40OCw0MS44NCwxNXoiPjwvcGF0aD48cGF0aCBmaWxsPSIjZGQyYzAwIiBkPSJNNy4xNTgsMTMuMjY0bDguODQzLDE0Ljg2MkwyMSwyN0w3LjE1OCwxMy4yNjR6Ij48L3BhdGg+PHBhdGggZmlsbD0iIzU1OGIyZiIgZD0iTTIzLjE1Nyw0NGw4LjkzNC0xNi4wNTlMMjgsMjVMMjMuMTU3LDQ0eiI+PC9wYXRoPjxwYXRoIGZpbGw9IiNmOWE4MjUiIGQ9Ik00MS44NjUsMTVIMjRsLTEuNTc5LDQuNThMNDEuODY1LDE1eiI+PC9wYXRoPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMywyNGMwLDQuOTY5LTQuMDMxLDktOSw5cy05LTQuMDMxLTktOXM0LjAzMS05LDktOVMzMywxOS4wMzEsMzMsMjR6Ij48L3BhdGg+PHBhdGggZmlsbD0iIzIxOTZmMyIgZD0iTTMxLDI0YzAsMy44NjctMy4xMzMsNy03LDdzLTctMy4xMzMtNy03czMuMTMzLTcsNy03UzMxLDIwLjEzMywzMSwyNHoiPjwvcGF0aD48L3N2Zz4=" />
+    </mat-card-content>
+    <mat-card-content style="display:flex;justify-content:center;">
+      Use Google Chrome Browser for Better Experience !!!!!
+    </mat-card-content>
+    <mat-card-content style="display: flex; justify-content: center; margin-top: 15%">
+      <!--<img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNDgiIGhlaWdodD0iNDgiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBmaWxsPSIjRkZDMTA3IiBkPSJNNDMuNjExLDIwLjA4M0g0MlYyMEgyNHY4aDExLjMwM2MtMS42NDksNC42NTctNi4wOCw4LTExLjMwMyw4Yy02LjYyNywwLTEyLTUuMzczLTEyLTEyYzAtNi42MjcsNS4zNzMtMTIsMTItMTJjMy4wNTksMCw1Ljg0MiwxLjE1NCw3Ljk2MSwzLjAzOWw1LjY1Ny01LjY1N0MzNC4wNDYsNi4wNTMsMjkuMjY4LDQsMjQsNEMxMi45NTUsNCw0LDEyLjk1NSw0LDI0YzAsMTEuMDQ1LDguOTU1LDIwLDIwLDIwYzExLjA0NSwwLDIwLTguOTU1LDIwLTIwQzQ0LDIyLjY1OSw0My44NjIsMjEuMzUsNDMuNjExLDIwLjA4M3oiPjwvcGF0aD48cGF0aCBmaWxsPSIjRkYzRDAwIiBkPSJNNi4zMDYsMTQuNjkxbDYuNTcxLDQuODE5QzE0LjY1NSwxNS4xMDgsMTguOTYxLDEyLDI0LDEyYzMuMDU5LDAsNS44NDIsMS4xNTQsNy45NjEsMy4wMzlsNS42NTctNS42NTdDMzQuMDQ2LDYuMDUzLDI5LjI2OCw0LDI0LDRDMTYuMzE4LDQsOS42NTYsOC4zMzcsNi4zMDYsMTQuNjkxeiI+PC9wYXRoPjxwYXRoIGZpbGw9IiM0Q0FGNTAiIGQ9Ik0yNCw0NGM1LjE2NiwwLDkuODYtMS45NzcsMTMuNDA5LTUuMTkybC02LjE5LTUuMjM4QzI5LjIxMSwzNS4wOTEsMjYuNzE1LDM2LDI0LDM2Yy01LjIwMiwwLTkuNjE5LTMuMzE3LTExLjI4My03Ljk0NmwtNi41MjIsNS4wMjVDOS41MDUsMzkuNTU2LDE2LjIyNyw0NCwyNCw0NHoiPjwvcGF0aD48cGF0aCBmaWxsPSIjMTk3NkQyIiBkPSJNNDMuNjExLDIwLjA4M0g0MlYyMEgyNHY4aDExLjMwM2MtMC43OTIsMi4yMzctMi4yMzEsNC4xNjYtNC4wODcsNS41NzFjMC4wMDEtMC4wMDEsMC4wMDItMC4wMDEsMC4wMDMtMC4wMDJsNi4xOSw1LjIzOEMzNi45NzEsMzkuMjA1LDQ0LDM0LDQ0LDI0QzQ0LDIyLjY1OSw0My44NjIsMjEuMzUsNDMuNjExLDIwLjA4M3oiPjwvcGF0aD48L3N2Zz4=" />-->
+      <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNDgiIGhlaWdodD0iNDgiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBmaWxsPSIjZmY4ZjAwIiBkPSJNOCwzN0wyMy4yMzQsOC40MzZjMC4zMjEtMC42MDIsMS4xODktMC41OTEsMS40OTQsMC4wMkwzMCwxOUw4LDM3eiI+PC9wYXRoPjxwYXRoIGZpbGw9IiNmZmEwMDAiIGQ9Ik04LDM2Ljk5Mmw1LjU0Ni0zNC4xOTljMC4xNDUtMC44OTUsMS4zNDctMS4wODksMS43NjctMC4yODVMMjYsMjIuOTkyTDgsMzYuOTkyeiI+PC9wYXRoPjxwYXRoIGZpbGw9IiNmZjZmMDAiIGQ9Ik04LjAwOCAzNi45ODZMOC4yMDggMzYuODI5IDI1LjczNyAyMi40ODggMjAuNzkzIDEzLjAxMnoiPjwvcGF0aD48cGF0aCBmaWxsPSIjZmZjNDAwIiBkPSJNOCwzN2wyNi42NjYtMjUuNzEzYzAuNTU5LTAuNTM5LDEuNDkyLTAuMjIxLDEuNjA2LDAuNTQ3TDQwLDM3bC0xNSw4Ljc0MyBjLTAuNjA5LDAuMzQyLTEuMzUyLDAuMzQyLTEuOTYxLDBMOCwzN3oiPjwvcGF0aD48L3N2Zz4=" />
+    </mat-card-content>
+
+    <mat-card-content >
+      <span>
+        In order to access the content, you need to Sign in with Google account @
+      </span>
+    </mat-card-content>
+      <mat-card-content >
+        <b>https://bhagavadgita-iw.firebaseapp.com</b>
+      </mat-card-content>
+      <!--<mat-card-content style="display:flex;justify-content:center">
     A popup window would help you to login.
   </mat-card-content>
   <mat-card-content style="display:flex;justify-content:center">
     <span>Please <b> allow popup </b>in your browser.</span>
   </mat-card-content>-->
-    <!--<mat-card-content style="display:flex;justify-content:center"><i>on Desktop</i></mat-card-content>
+      <!--<mat-card-content style="display:flex;justify-content:center"><i>on Desktop</i></mat-card-content>
 
   <img mat-card-image src=".\assets\image_files\LoginDesktop.jpeg" />
   <mat-card-content style="display:flex;justify-content:center"><i>on Mobile</i></mat-card-content>
   <img mat-card-image src=".\assets\image_files\LoginMobile.jpeg" />-->
+      <mat-card-content align="end" style="margin-top:35%"><i><b>{{signInButtonText}}</b></i></mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions align="end">
 
-    <mat-card-actions  align="end">
-      <button mat-raised-button [disabled]="disableButton" (click)="signIn()"><b>{{signInButtonText}}</b></button>
-    </mat-card-actions>
-  </mat-card>
+        <button mat-raised-button color="primary" [disabled]="disableButton" (click)="signIn()">
+
+
+          <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNDgiIGhlaWdodD0iNDgiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBmaWxsPSIjNGNhZjUwIiBkPSJNNDUsMTYuMmwtNSwyLjc1bC01LDQuNzVMMzUsNDBoN2MxLjY1NywwLDMtMS4zNDMsMy0zVjE2LjJ6Ij48L3BhdGg+PHBhdGggZmlsbD0iIzFlODhlNSIgZD0iTTMsMTYuMmwzLjYxNCwxLjcxTDEzLDIzLjdWNDBINmMtMS42NTcsMC0zLTEuMzQzLTMtM1YxNi4yeiI+PC9wYXRoPjxwb2x5Z29uIGZpbGw9IiNlNTM5MzUiIHBvaW50cz0iMzUsMTEuMiAyNCwxOS40NSAxMywxMS4yIDEyLDE3IDEzLDIzLjcgMjQsMzEuOTUgMzUsMjMuNyAzNiwxNyI+PC9wb2x5Z29uPjxwYXRoIGZpbGw9IiNjNjI4MjgiIGQ9Ik0zLDEyLjI5OFYxNi4ybDEwLDcuNVYxMS4yTDkuODc2LDguODU5QzkuMTMyLDguMzAxLDguMjI4LDgsNy4yOTgsOGgwQzQuOTI0LDgsMyw5LjkyNCwzLDEyLjI5OHoiPjwvcGF0aD48cGF0aCBmaWxsPSIjZmJjMDJkIiBkPSJNNDUsMTIuMjk4VjE2LjJsLTEwLDcuNVYxMS4ybDMuMTI0LTIuMzQxQzM4Ljg2OCw4LjMwMSwzOS43NzIsOCw0MC43MDIsOGgwIEM0My4wNzYsOCw0NSw5LjkyNCw0NSwxMi4yOTh6Ij48L3BhdGg+PC9zdmc+" />
+        </button>
+      </mat-card-actions>
+</mat-card>
 
 </div>
