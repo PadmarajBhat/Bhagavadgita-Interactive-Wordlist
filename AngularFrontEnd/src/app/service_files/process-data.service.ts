@@ -87,7 +87,9 @@ export class ProcessDataService {
          .replace('।','|')
         .replace('धृतराष्ट्र उवाच\n\n', '')
         .replace('सञ्जय उवाच\n\n', '')
+        .replace('सञ्जय उवाच', '')
         .replace('अर्जुन उवाच\n\n', '')
+        .replace('अर्जुन उवाच', '')
         .replace('श्री भगवानुवाच\n\n', '')
         .replace('श्री भगवानुवाच', '')
         .replace(/\n\n/g, ' ');
